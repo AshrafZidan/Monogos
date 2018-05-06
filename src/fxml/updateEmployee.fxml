@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="357.0" prefWidth="448.0" style="-fx-background-color: #2f3542;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UpdateEmployeeController">
+    <stylesheets>
+        <URL value="@createnewsupplier.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="43.0" layoutY="67.0" prefHeight="17.0" prefWidth="79.0" text="Name :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="employeeName" layoutX="101.0" layoutY="60.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
+      <JFXTextField fx:id="employeeEmail" layoutX="101.0" layoutY="104.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
+      <Label layoutX="43.0" layoutY="111.0" prefHeight="17.0" prefWidth="79.0" text="Email :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="employeephone" layoutX="101.0" layoutY="148.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
+      <Label layoutX="43.0" layoutY="155.0" prefHeight="17.0" prefWidth="79.0" text="phone :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="updateBtn" layoutX="121.0" layoutY="298.0" onAction="#employeepdateAction" prefHeight="37.0" prefWidth="216.0" style="-fx-background-color: #5352ed;" text="تحديث البيانات" textFill="#dadada">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="33.0" layoutY="199.0" prefHeight="17.0" prefWidth="79.0" text="Address:" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="employeeAddress" layoutX="100.0" layoutY="192.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
+      <Label layoutX="43.0" layoutY="242.0" prefHeight="17.0" prefWidth="79.0" text="Store :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="storeCombox" layoutX="122.0" layoutY="238.0" prefHeight="25.0" prefWidth="169.0" promptText="Store" style="-fx-background-color: #dadada;" />
+   </children>
+</AnchorPane>

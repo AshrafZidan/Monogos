@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="MongoDb_Pro.jnlp">
+  <information>
+    <title>MongoDb_Pro</title>
+    <vendor>Zi-D-aN</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="MongoDb_Pro.jar" size="1936033" download="eager" />
+    <jar href="lib\jfoenix.jar" size="2154926" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="MongoDb_Pro" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="mongodb_pro.MongoDb_Pro"  name="MongoDb_Pro" />
+  <update check="always"/>
+</jnlp>

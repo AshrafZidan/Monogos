@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="357.0" prefWidth="448.0" style="-fx-background-color: #2f3542;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UpdateSupplierController">
+    <stylesheets>
+        <URL value="@createnewsupplier.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="43.0" layoutY="67.0" prefHeight="17.0" prefWidth="79.0" text="Name :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="supplierName" layoutX="101.0" layoutY="60.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
+      <JFXTextField fx:id="supplierPhone" layoutX="101.0" layoutY="128.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
+      <Label layoutX="43.0" layoutY="135.0" prefHeight="17.0" prefWidth="79.0" text="phone :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="supplierUpdate" layoutX="126.0" layoutY="273.0" onAction="#supplierUpdateAction" prefHeight="37.0" prefWidth="216.0" style="-fx-background-color: #5352ed;" text="تحديث البيانات" textFill="#dadada">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="33.0" layoutY="199.0" prefHeight="17.0" prefWidth="79.0" text="Address:" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="supplierAddress" layoutX="100.0" layoutY="192.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
+   </children>
+</AnchorPane>

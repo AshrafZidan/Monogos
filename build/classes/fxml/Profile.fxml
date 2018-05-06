@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="508.0" prefWidth="700.0" style="-fx-background-color: #2f3542; -fx-border-radius: 10 10 10 10;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProfileController">
+    <stylesheets>
+        <URL value="@profile.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutX="284.0" layoutY="56.0" prefHeight="342.0" prefWidth="409.0" style="-fx-background-color: #ffffff; -fx-border-radius: -fx-border-radius: 10 10 0 0;">
+         <children>
+            <Label layoutX="29.0" layoutY="26.0" prefHeight="25.0" prefWidth="67.0" text="Name :" textFill="#5352ed">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="121.0" layoutY="23.0" maxWidth="263.0" minWidth="210.0" prefHeight="31.0" prefWidth="263.0" />
+            <JFXTextField layoutX="121.0" layoutY="77.0" maxWidth="263.0" minWidth="210.0" prefHeight="31.0" prefWidth="263.0" />
+            <Label layoutX="29.0" layoutY="80.0" prefHeight="25.0" prefWidth="67.0" text="Email :" textFill="#5352ed">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="122.0" prefHeight="25.0" prefWidth="67.0" text="Phone :" textFill="#5352ed">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="121.0" layoutY="119.0" maxWidth="263.0" minWidth="210.0" prefHeight="31.0" prefWidth="263.0" />
+            <Label layoutX="14.0" layoutY="164.0" prefHeight="25.0" prefWidth="82.0" text="password :" textFill="#5352ed">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="16.0" layoutY="215.0" prefHeight="25.0" prefWidth="82.0" text="new Pass :" textFill="#5352ed">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="57.0" layoutY="287.0" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: #ff4757; -fx-border-radius: ;" styleClass="load" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="274.0" layoutY="287.0" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #5352ed; -fx-border-radius: ;" styleClass="load" text="Load Info" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXPasswordField layoutX="119.0" layoutY="161.0" maxWidth="263.0" minWidth="263.0" prefHeight="31.0" prefWidth="263.0" />
+            <JFXPasswordField layoutX="119.0" layoutY="212.0" maxWidth="263.0" minWidth="263.0" prefHeight="31.0" prefWidth="263.0" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="57.0" fitWidth="78.0" layoutX="10.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+              <Image url="Images/profile.png" />
+              
+          </image>
+          
+      </ImageView>
+      <Label layoutX="85.0" layoutY="96.0" text="Label" />
+      <Label layoutX="14.0" layoutY="254.0" prefHeight="17.0" prefWidth="247.0" text="Lorem Ipsum is simply dummy text  dummy " textFill="#dadada" />
+      <Label layoutX="46.0" layoutY="277.0" prefHeight="17.0" prefWidth="135.0" text="Lorem Ipsum is simply  " textFill="#dadada" />
+      <JFXButton fx:id="createNewUserBtn" layoutX="33.0" layoutY="325.0" onAction="#loadNewUserPage" prefHeight="31.0" prefWidth="214.0" style="-fx-background-color: #5352ed;" text="Create New User" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="73.0" layoutY="77.0" text="Asmart Way of ...." textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="homepage" prefHeight="650.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HomeController">
+    <stylesheets>
+        <URL value="@home.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutX="-10.0" prefHeight="661.0" prefWidth="268.0" style="-fx-background-color: #2f3542;">
+         <children>
+            <Label layoutX="47.0" layoutY="98.0" text="inventory system" textFill="#dfe4ea">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Separator layoutX="-6.0" layoutY="135.0" prefHeight="3.0" prefWidth="69.0" styleClass="sp" />
+            <Label layoutX="29.0" layoutY="158.0" prefHeight="17.0" prefWidth="169.0" text="Welcome to inventory system   " textFill="#a4b0be" />
+            <Label layoutX="41.0" layoutY="184.0" prefHeight="17.0" prefWidth="148.0" text="Here , you 'll find all infos" textFill="#a4b0be" />
+            <Label layoutX="29.0" layoutY="222.0" text="Dashboard" textFill="#dfe4ea">
+               <font>
+                  <Font name="Arial Black" size="24.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="SupplierBtn" layoutX="76.0" layoutY="300.0" onAction="#SupplierPage" text="Suppliers" textFill="#a4b0be">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="employeeBtn" layoutX="77.0" layoutY="342.0" onAction="#employPage" text="Employes" textFill="#a4b0be">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="productBtn" layoutX="81.0" layoutY="384.0" onAction="#productPage" text="Products" textFill="#a4b0be">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="usersBtn" layoutX="85.0" layoutY="423.0" onAction="#usersPage" text="Users" textFill="#a4b0be">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="profileBtn" layoutX="82.0" layoutY="462.0" onAction="#profilePage" text="Profile" textFill="#a4b0be">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <Label alignment="CENTER" layoutX="212.0" layoutY="309.0" prefHeight="20.0" prefWidth="24.0" style="-fx-background-color: #3742fa;" text="0" textFill="#fcf2f2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="211.0" layoutY="349.0" prefHeight="20.0" prefWidth="24.0" style="-fx-background-color: #3742fa;" text="0" textFill="#fcf2f2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="211.0" layoutY="393.0" prefHeight="20.0" prefWidth="24.0" style="-fx-background-color: #3742fa;" text="0" textFill="#fcf2f2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="211.0" layoutY="432.0" prefHeight="20.0" prefWidth="24.0" style="-fx-background-color: #3742fa;" text="0" textFill="#fcf2f2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" layoutX="134.0" layoutY="542.0" startX="-100.0" stroke="#a4b0be" />
+            <JFXButton layoutX="69.0" layoutY="580.0" prefHeight="37.0" prefWidth="132.0" style="-fx-border-color: #dfe4ea;" text="Contact Us" textFill="#dfe4ea">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="69.0" fitWidth="122.0" layoutX="63.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                
+                 <image>
+            <Image url="Images/Custom-Inventory-Solution-LargeIcon.png" />
+         </image>
+         
+            </ImageView>
+         </children>
+      </Pane>
+      <Separator layoutX="264.0" layoutY="27.0" prefHeight="0.0" prefWidth="734.0" style="-fx-background-color: #2f3542;" />
+      <Pane layoutX="257.0" prefHeight="46.0" prefWidth="744.0" style="-fx-background-color: #2f3542;">
+         <children>
+            <Label layoutX="323.0" layoutY="8.0" text="WELCOME" textFill="#a4b0be">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="holderPane" layoutX="275.0" layoutY="67.0" prefHeight="575.0" prefWidth="704.0" />
+      
+
+      
+   </children>
+</AnchorPane>

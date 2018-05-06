@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="580.0" prefWidth="700.0" style="-fx-background-color: #2f3542;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UsersController">
+    <stylesheets>
+        <URL value="@employee.css" />
+    </stylesheets>
+   <children>
+      <JFXTreeTableView fx:id="userTable" layoutX="18.0" layoutY="134.0" prefHeight="421.0" prefWidth="662.0">
+         <columns>
+            <TreeTableColumn fx:id="userTable_name" prefWidth="135.0" text="الاسم" />
+            <TreeTableColumn fx:id="userTable_phone" prefWidth="127.0" text="الموبايل" />
+            <TreeTableColumn fx:id="userTable_address" prefWidth="125.0" text="العنوان" />
+            <TreeTableColumn fx:id="userTable_email" prefWidth="147.0" text="الايميل" />
+            <TreeTableColumn fx:id="userTable_role" prefWidth="126.0" text="الصلاحيه " />
+         </columns></JFXTreeTableView>
+      <JFXTextField focusColor="#ff4757" layoutX="279.0" layoutY="30.0" maxWidth="330.0" minWidth="297.0" prefHeight="31.0" prefWidth="330.0" promptText="Filter" style="-fx-text-fill: #fff;" unFocusColor="#5352ed" />
+      <JFXButton fx:id="addNewBtn" layoutX="28.0" layoutY="30.0" onAction="#loadNewUserPage" prefHeight="25.0" prefWidth="104.0" style="-fx-background-color: #5352ed;" text="إضافه مستخدم" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="26.0" fitWidth="19.0" layoutX="260.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+              <Image url="Images/filter.png" />
+          </image> 
+          
+      </ImageView>
+      <JFXButton fx:id="refreshBtn" layoutX="28.0" layoutY="81.0" onAction="#refreshPage" prefHeight="25.0" prefWidth="104.0" style="-fx-background-color: #5352ed;" text="تحديث البيانات" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </JFXButton>
+
+   </children>
+</AnchorPane>

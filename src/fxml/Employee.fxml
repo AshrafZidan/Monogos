@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane id="AnchorPane" nodeOrientation="RIGHT_TO_LEFT" prefHeight="581.0" prefWidth="700.0" style="-fx-background-color: #2f3542;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EmployeeController">
+    <stylesheets>
+        <URL value="@employee.css" />
+    </stylesheets>
+   <children>
+      <HBox fx:id="hbox1" layoutX="80.0" layoutY="15.0" nodeOrientation="RIGHT_TO_LEFT">
+         <children>
+            <JFXTextField fx:id="searchBox" focusColor="#ff4757" layoutX="238.0" layoutY="33.0" maxWidth="370.0" minWidth="255.0" onAction="#searchByName" prefHeight="31.0" prefWidth="370.0" promptText="أبحث هنا. .." style="-fx-text-fill: #fff;" unFocusColor="#5352ed" />
+            <ImageView fitHeight="25.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="Images/filter.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="addNewBtn" onAction="#LoadAddNewPage" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #3742fa;" text="إدخال جديد" textFill="#dadada">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" right="10.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="updateBtn" onAction="#updatePage" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #3742fa;" text="تعــــــديل" textFill="#dadada">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="refresh" onAction="#refreshPage" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #3742fa;" text="تحديث البيانات" textFill="#dadada">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+      <JFXTreeTableView fx:id="employeeTable" layoutY="100.0" prefHeight="330.0" prefWidth="671.0">
+         <columns>
+            <TreeTableColumn fx:id="employeeTable_name" prefWidth="154.0" text="الاسم" />
+            <TreeTableColumn fx:id="employeeTable_phone" prefWidth="128.0" text="الموبايل " />
+            <TreeTableColumn fx:id="employeeTable_address" prefWidth="137.0" text="العنوان " />
+            <TreeTableColumn fx:id="employeeTable_email" prefWidth="134.0" text="الإيميل " />
+            <TreeTableColumn fx:id="employeeTable_store" prefWidth="111.0" text="المخزن" />
+         </columns>
+      </JFXTreeTableView>
+      <HBox fx:id="lastHbox" layoutX="33.0" layoutY="534.0">
+         <children>
+            <JFXButton fx:id="deletBtn" layoutX="34.0" layoutY="535.0" onAction="#deleteEmployee" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #3742fa;" text="حـــذف موظف" textFill="#dadada">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+      
+            
+   </children>
+</Pane>

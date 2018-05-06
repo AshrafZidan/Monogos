@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="452.0" style="-fx-background-color: #2f3542;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CreateNewUserController">
+    <stylesheets>
+        <URL value="@createnewuser.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="43.0" layoutY="67.0" prefHeight="17.0" prefWidth="79.0" text="Name :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField layoutX="101.0" layoutY="60.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" />
+      <JFXTextField layoutX="101.0" layoutY="104.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" />
+      <Label layoutX="43.0" layoutY="111.0" prefHeight="17.0" prefWidth="79.0" text="Email :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField layoutX="101.0" layoutY="148.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" />
+      <Label layoutX="43.0" layoutY="155.0" prefHeight="17.0" prefWidth="79.0" text="phone :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXPasswordField layoutX="101.0" layoutY="189.0" maxWidth="255.0" minWidth="209.0" prefHeight="31.0" prefWidth="255.0" />
+      <Label layoutX="43.0" layoutY="205.0" prefHeight="17.0" prefWidth="79.0" text="pass :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXRadioButton layoutX="116.0" layoutY="269.0" selected="true" text="Admin" textFill="#dadada">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="role" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton layoutX="220.0" layoutY="269.0" text="User" textFill="#dadada" toggleGroup="$role">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXButton layoutX="127.0" layoutY="317.0" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: #5352ed;" text="Create" textFill="#dadada">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
