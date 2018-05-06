@@ -106,7 +106,7 @@ public class ProfileController implements Initializable {
     private Accordion accordion;
 
     @FXML
-    private TitledPane pane1 , pane2 , pane3;
+    private TitledPane pane1, pane2, pane3;
 
     @FXML
     private Pane mainPane;
@@ -122,7 +122,6 @@ public class ProfileController implements Initializable {
 
     @FXML
     private TitledPane pane22;
-
 
 
     @FXML
@@ -155,10 +154,8 @@ public class ProfileController implements Initializable {
 
 
     @FXML
-    private Pane mainPane2, infoPane, phonPane, tablePane, userPane , pane221;
+    private Pane mainPane2, infoPane, phonPane, tablePane, userPane, pane221;
 
-    @FXML
-    private Label label2;
 
     @FXML
     private JFXButton backup, save;
@@ -206,15 +203,14 @@ public class ProfileController implements Initializable {
         infoPane.setLayoutX(phonPane.getPrefWidth() + 10);
         label.setLayoutX(width / 2);
 
-        label2.setLayoutX((width / 2) - 160);
         logoutBtn.setLayoutX(width / 2);
-        backup.setLayoutX((width / 2) - 130);
+
         closeBtn.setLayoutX(width / 2);
         pane2.setPrefWidth(screenWidth);
         accordion.setExpandedPane(pane1);
 
         // --------------------------------- init table user ---------------------------
-        tableUserName.setCellValueFactory(new Callback <TreeTableColumn.CellDataFeatures<ProfileController.tableUser , String>, ObservableValue<String>>() {
+        tableUserName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ProfileController.tableUser, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<ProfileController.tableUser, String> param) {
                 return param.getValue().getValue().name;
@@ -240,7 +236,7 @@ public class ProfileController implements Initializable {
         });
         tableEmail.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<ProfileController.tableUser, String>, ObservableValue<String>>() {
             @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<ProfileController.tableUser , String> param) {
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<ProfileController.tableUser, String> param) {
                 return param.getValue().getValue().email;
             }
 
@@ -257,8 +253,8 @@ public class ProfileController implements Initializable {
         // Select All Suppliers
 
         List<DBObject> dbObjects = userTransaction.SelectAll();
-        dbObjects.stream().forEach(ee ->{
-            user_data.add(new ProfileController.tableUser(ee.get("_id").toString(), ee.get("name").toString(), ee.get("phone").toString(), ee.get("address").toString(),ee.get("email").toString(), ee.get("role").toString()));
+        dbObjects.stream().forEach(ee -> {
+            user_data.add(new ProfileController.tableUser(ee.get("_id").toString(), ee.get("name").toString(), ee.get("phone").toString(), ee.get("address").toString(), ee.get("email").toString(), ee.get("role").toString()));
 
 
         });
@@ -274,7 +270,7 @@ public class ProfileController implements Initializable {
 
 
     @FXML
-    void deleteUserAction(ActionEvent e){
+    void deleteUserAction(ActionEvent e) {
         // check Selection
         RecursiveTreeItem selectedItem = (RecursiveTreeItem) tableUser.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
@@ -283,8 +279,8 @@ public class ProfileController implements Initializable {
             BasicDBObject basicDBObject = userTransaction.deleteUser(userTableSelected.id.get());
 
             if (basicDBObject != null) {
-                boolean t =  user_data.remove(userTableSelected);
-                final  TreeItem<tableUser>  root = new RecursiveTreeItem <>(user_data , RecursiveTreeObject::getChildren);
+                boolean t = user_data.remove(userTableSelected);
+                final TreeItem<tableUser> root = new RecursiveTreeItem<>(user_data, RecursiveTreeObject::getChildren);
                 tableUser.setRoot(root);
 
                 if (!t) {
@@ -307,9 +303,6 @@ public class ProfileController implements Initializable {
 
     }
 
-
-    @FXML
-    void backupAction(ActionEvent e){}
 
     @FXML
     void addUserAction(ActionEvent event) {
@@ -391,7 +384,7 @@ public class ProfileController implements Initializable {
     void loadInfoAction(ActionEvent event) {
 
         //get current  user id  to load his infos
-        DBObject userObj = userTransaction.SelectbyID("5ada0428c466192c246b9179");
+        DBObject userObj = userTransaction.SelectbyID(LoginMainController.UserId);
         UserName.setText(userObj.get("name").toString());
         UserEmail.setText(userObj.get("email").toString());
         UserAddress.setText(userObj.get("address").toString());
@@ -426,7 +419,7 @@ public class ProfileController implements Initializable {
         SimpleStringProperty email;
         SimpleStringProperty role;
 
-        public tableUser(String id, String name, String phone, String address,String email, String role) {
+        public tableUser(String id, String name, String phone, String address, String email, String role) {
             this.id = new SimpleStringProperty(id);
             this.name = new SimpleStringProperty(name);
             this.phone = new SimpleStringProperty(phone);

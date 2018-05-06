@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import org.bson.types.ObjectId;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -96,6 +97,7 @@ public class updateProductController implements Initializable {
 
 
             BasicDBObject basicDBObject = new BasicDBObject();
+            basicDBObject.put("_id", new ObjectId(supplierId));
             basicDBObject.put("name", pName);
             basicDBObject.put("model", pModel);
             basicDBObject.put("amount", pAmount);
@@ -121,12 +123,14 @@ public class updateProductController implements Initializable {
 
     private void resetFields() {
 
-        this.supplierName.setValue("");
+        this.name.setText("");
         this.model.setText("");
         this.amount.setText("");
         this.buyPrice.setText("");
         this.sellPrice.setText("");
         this.profit.setText("");
+        this.supplierName.setValue("");
+
 
         // set init date
         String newstring = new SimpleDateFormat("dd-MM-yyyy").format(new Date());

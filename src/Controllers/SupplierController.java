@@ -26,15 +26,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import loadFxml.MainUpdateSupplier;
@@ -54,6 +57,9 @@ public class SupplierController implements Initializable {
     private JFXButton addNewBtn;
     @FXML
     private JFXButton updateBtn;
+
+    @FXML
+    private HBox hbox1 , lastHbox;
 
     @FXML
     private TreeTableView<SupplierController.supplierTable> supplierTable;
@@ -140,6 +146,27 @@ public class SupplierController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        // --------------- set size ---------------------------
+
+
+
+
+
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+        hbox1.setPrefWidth(primaryScreenBounds.getWidth() - 180);
+        supplierTable.setPrefWidth(primaryScreenBounds.getWidth() - 190);
+
+//        System.out.println(employeeTable.getLayoutX());
+
+        lastHbox.setLayoutY(primaryScreenBounds.getHeight() - 75);
+//        hbox4.setLayoutY(table.getPrefHeight());
+        supplierTable.setPrefHeight(primaryScreenBounds.getHeight() - 200);
+
+        supplierTable_name.setPrefWidth(supplierTable.getPrefWidth() / 3);
+        supplierTable_address.setPrefWidth(supplierTable.getPrefWidth() / 3 );
+        supplierTable_phone.setPrefWidth(supplierTable.getPrefWidth() / 3 );
+
+
 
         // table column initlaize
         supplierTable_name.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<supplierTable, String>, ObservableValue<String>>() {
@@ -191,7 +218,7 @@ public class SupplierController implements Initializable {
         try {
             Stage home = new Stage();
 
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/CreateNewStor.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/CreateNewSupplier.fxml"));
             Scene scene = new Scene(root);
 
             home.setTitle("Create New Store");

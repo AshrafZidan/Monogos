@@ -6,14 +6,20 @@
 package Controllers;
 
 import Model.MongoConnection;
+import Model.userTransaction;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.mongodb.DBObject;
 import com.sun.javaws.progress.Progress;
+
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import dialogs.dialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +30,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import loadFxml.MainHome;
 
 /**
  * FXML Controller class
@@ -35,25 +42,24 @@ public class LoginMainController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
+
     @FXML
     private JFXButton login;
-  
+
     @FXML
     private JFXTextField userName;
-      
-      
+
+
     @FXML
     private JFXPasswordField pass;
-       
+
+
     @FXML
-    private JFXCheckBox  remember;
-    
-    @FXML
-      AnchorPane loginpage;
-      
-    
-    String name , password ; 
+    AnchorPane loginpage;
+
+    static String UserId;
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -62,17 +68,13 @@ public class LoginMainController implements Initializable {
 
 
     }
-    
-    
-   @FXML
-   public void loginFunc(ActionEvent e) throws IOException{
 
 
-       try {
-           loginFunction();
-       } catch (IOException ex) {
-           ex.printStackTrace();
-       }
+    @FXML
+    public void loginFunc(ActionEvent e) throws IOException {
+
+
+        loginFunction();
 //       if (usernameField.getText().isEmpty()) {
 //           errorMsg.show("Username is empty !", 1500);
 //           return;
@@ -86,19 +88,48 @@ public class LoginMainController implements Initializable {
 //
 //       errorMsg.show("Success !", 2000);
 
-   }
-
-    public  void  loginFunction() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setController(new HomeController());
-        loader.setLocation(getClass().getResource("/fxml/home.fxml"));
-        Parent root = loader.load();
+    }
 
 
+    public void loginFunction() throws IOException {
 
 
-        Scene scene = new Scene(root);
+        String username = userName.getText();
+        String password = pass.getText();
+        if (username.trim().isEmpty()
+                || password.trim().isEmpty()
+                ) {
 
+            dialog dd = new dialog(Alert.AlertType.WARNING, "Error", "enter all data");
+
+        } else {
+
+            // if not found eny
+            List<DBObject> dbObjects = userTransaction.SelectAll();
+            if (dbObjects.isEmpty()) {
+
+                // ad new user
+
+                userTransaction.insertUser("admin", "admin", "admin", "123456", "admin", "admin");
+
+            }
+            DBObject dbObject = userTransaction.SelectByNamePass(username, password);
+            if (dbObject == null) {
+                // not found
+                dialog dd = new dialog(Alert.AlertType.WARNING, "Error", "user Not Found ");
+
+
+            } else {
+
+                UserId = dbObject.get("_id").toString();
+                ((Stage) userName.getScene().getWindow()).close();
+
+
+                MainHome mainHome = new MainHome();
+            }
+
+
+        }
 
     }
 }

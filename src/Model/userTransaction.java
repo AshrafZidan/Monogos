@@ -22,7 +22,7 @@ public class userTransaction {
 
     }
 
-    public  static  BasicDBObject insertUser(String Name , String Address , String Email ,String phone , String pass , String role){
+    public static BasicDBObject insertUser(String Name, String Address, String Email, String phone, String pass, String role) {
 
 
         BasicDBObject document = new BasicDBObject();
@@ -48,12 +48,13 @@ public class userTransaction {
 
 
     }
+
     public static BasicDBObject updateUser(String id, BasicDBObject objectUpdated) {
 
 
         BasicDBObject update_query = new BasicDBObject();
 
-        update_query .put("_id", new ObjectId(id));
+        update_query.put("_id", new ObjectId(id));
 
 
         BasicDBObject newInfo = new BasicDBObject();
@@ -80,6 +81,17 @@ public class userTransaction {
     }
 
 
+    public static DBObject SelectByNamePass(String username, String password) {
+        BasicDBObject searchQuery1 = new BasicDBObject();
+
+        searchQuery1.put("name", username);
+        searchQuery1.put("pass", password);
+
+        DBObject one = collection.findOne(searchQuery1);
+
+        return one;
+
+    }
 }
 
 

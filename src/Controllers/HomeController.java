@@ -202,7 +202,7 @@ public class HomeController implements Initializable {
 
             FXMLLoader loader = new FXMLLoader();
 //            loader.setController(new ProfileController());
-            loader.setLocation(getClass().getResource("/Fxml/Profile.fxml"));
+            loader.setLocation(getClass().getResource("/fxml/Profile.fxml"));
             holderPane = loader.load();
 
             setNode(holderPane);
@@ -215,65 +215,65 @@ public class HomeController implements Initializable {
     }
 
 
-    @FXML
-    private void SupplierPage(ActionEvent event) throws IOException {
-        try {
-            homepage = FXMLLoader.load(getClass().getResource("/fxml/supplier.fxml"));
-            setNode(homepage);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-
-    }
-
-    @FXML
-    private void productPage(ActionEvent event) throws IOException {
-        try {
-            homepage = FXMLLoader.load(getClass().getResource("/fxml/products.fxml"));
-            setNode(homepage);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-
-    }
-
-    @FXML
-    private void usersPage(ActionEvent event) throws IOException {
-        try {
-            homepage = FXMLLoader.load(getClass().getResource("/fxml/Users.fxml"));
-            setNode(homepage);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-
-    }
-
-    @FXML
-    private void employPage(ActionEvent event) throws IOException {
-        try {
-            homepage = FXMLLoader.load(getClass().getResource("/fxml/Employee.fxml"));
-            setNode(homepage);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-
-    }
-
-    @FXML
-    private void profilePage(ActionEvent event) throws IOException {
-        try {
-            homepage = FXMLLoader.load(getClass().getResource("/fxml/Profile.fxml"));
-            setNode(homepage);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-
-    }
+//    @FXML
+//    private void SupplierPage(ActionEvent event) throws IOException {
+//        try {
+//            homepage = FXMLLoader.load(getClass().getResource("/fxml/supplier.fxml"));
+//            setNode(homepage);
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+//
+//
+//    }
+//
+//    @FXML
+//    private void productPage(ActionEvent event) throws IOException {
+//        try {
+//            homepage = FXMLLoader.load(getClass().getResource("/fxml/products.fxml"));
+//            setNode(homepage);
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+//
+//
+//    }
+//
+//    @FXML
+//    private void usersPage(ActionEvent event) throws IOException {
+//        try {
+//            homepage = FXMLLoader.load(getClass().getResource("/fxml/Users.fxml"));
+//            setNode(homepage);
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+//
+//
+//    }
+//
+//    @FXML
+//    private void employPage(ActionEvent event) throws IOException {
+//        try {
+//            homepage = FXMLLoader.load(getClass().getResource("/fxml/Employee.fxml"));
+//            setNode(homepage);
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+//
+//
+//    }
+//
+//    @FXML
+//    private void profilePage(ActionEvent event) throws IOException {
+//        try {
+//            homepage = FXMLLoader.load(getClass().getResource("/fxml/Profile.fxml"));
+//            setNode(homepage);
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+//
+//
+//    }
 
 
 }

@@ -80,7 +80,7 @@ public class StoresController implements Initializable {
         // --------------- set size ---------------------------
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         hbox1.setPrefWidth(primaryScreenBounds.getWidth() - 180);
-        storeTable.setPrefWidth(primaryScreenBounds.getWidth() - 180);
+        storeTable.setPrefWidth(primaryScreenBounds.getWidth() - 190);
 
         lastHbox.setLayoutY(primaryScreenBounds.getHeight() - 75);
         storeTable.setPrefHeight(primaryScreenBounds.getHeight() - 200);

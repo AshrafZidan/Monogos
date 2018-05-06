@@ -34,7 +34,7 @@ public class storeTransaction {
 
         BasicDBObject document = new BasicDBObject();
         document.put("name", Name);
-        document.put("address", Address);
+        document.put("location", Address);
 
         storesCollection.insert(document);
         return document;

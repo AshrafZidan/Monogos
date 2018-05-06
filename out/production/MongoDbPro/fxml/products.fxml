@@ -3,37 +3,77 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProductsController">
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="767.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProductsController">
     <stylesheets>
         <URL value="@products.css" />
       <URL value="@employee.css" />
     </stylesheets>
    <children>
-      <JFXButton fx:id="addNew" layoutX="27.0" layoutY="14.0" onAction="#addNewAction" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #2f3542;" text="Add New" textFill="#dadada">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </JFXButton>
-      <JFXTextField focusColor="#ff4757" layoutX="286.0" layoutY="17.0" maxWidth="301.0" minWidth="301.0" prefHeight="31.0" prefWidth="301.0" promptText="Filter" />
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="270.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-           <image>
-                  <Image url="Images/filter.png" />
-               </image>
-      </ImageView>
-      
-      <JFXButton fx:id="updateProduct" layoutX="27.0" layoutY="76.0" onAction="#updateProductAction" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #2f3542;" text="Update" textFill="#dadada">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </JFXButton>
-      <TreeTableView fx:id="tableProduct" layoutX="15.0" layoutY="163.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="346.0" prefWidth="671.0">
+      <HBox fx:id="lastHbox" layoutX="50.0" layoutY="15.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <JFXButton fx:id="delete" onAction="#deleteProductAction" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #2f3542;" text="Delelte" textFill="#dadada">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+      <HBox fx:id="hbox1" layoutX="-40.0" layoutY="15.0" nodeOrientation="RIGHT_TO_LEFT">
+         <children>
+            <JFXTextField focusColor="#ff4757" layoutX="10.0" maxWidth="301.0" minWidth="250.0" prefHeight="31.0" prefWidth="250.0" promptText="Filter" />
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                 <image>
+                        <Image url="Images/filter.png" />
+                     </image>
+            </ImageView>
+            <DatePicker fx:id="from" />
+            <DatePicker fx:id="to" />
+            <JFXButton fx:id="search" onAction="#searchProduct" prefHeight="37.0" prefWidth="126.0" style="-fx-background-color: #2f3542;" text="search" textFill="#dadada">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="refreshTable" onAction="#refreshTableAction" prefHeight="37.0" prefWidth="126.0" style="-fx-background-color: #2f3542;" text="refreshTable" textFill="#dadada">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="addNew" onAction="#addNewAction" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #2f3542;" text="Add New" textFill="#dadada">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </JFXButton>
+            
+            <JFXButton fx:id="updateProduct" onAction="#updateProductAction" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #2f3542;" text="Update" textFill="#dadada">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+      </HBox>
+      <TreeTableView fx:id="tableProduct" layoutY="80.0" nodeOrientation="RIGHT_TO_LEFT">
         <columns>
           <TreeTableColumn fx:id="proName" prefWidth="85.0" text="اسم المنتج" />
           <TreeTableColumn fx:id="proModel" prefWidth="65.0" text="المودل" />
@@ -45,10 +85,5 @@
             <TreeTableColumn fx:id="proSuppName" prefWidth="92.0" text="اسم المورد" />
         </columns>
       </TreeTableView>
-      <JFXButton fx:id="refreshTable" layoutX="27.0" layoutY="120.0" onAction="#refreshTableAction" prefHeight="37.0" prefWidth="126.0" style="-fx-background-color: #2f3542;" text="refreshTable" textFill="#dadada">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </JFXButton>
    </children>
 </AnchorPane>

@@ -108,9 +108,16 @@ public class EmployeeController implements Initializable {
 
 
         // --------------- set size ---------------------------
+
+
+
+
+
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         hbox1.setPrefWidth(primaryScreenBounds.getWidth() - 180);
-        employeeTable.setPrefWidth(primaryScreenBounds.getWidth() - 185);
+        employeeTable.setPrefWidth(primaryScreenBounds.getWidth() - 190);
+
+//        System.out.println(employeeTable.getLayoutX());
 
         lastHbox.setLayoutY(primaryScreenBounds.getHeight() - 75);
 //        hbox4.setLayoutY(table.getPrefHeight());

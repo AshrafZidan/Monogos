@@ -6,6 +6,9 @@
 package Controllers;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -14,6 +17,7 @@ import Model.supplierTransaction;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import dialogs.dialog;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -25,14 +29,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import loadFxml.MainUpdateProduct;
@@ -45,11 +49,16 @@ import loadFxml.MainUpdateProduct;
 public class ProductsController implements Initializable {
     ObservableList<productTable> productTable_data = FXCollections.observableArrayList();
 
+    @FXML
+    private DatePicker from;
 
     @FXML
-    private JFXButton addNew;
+    private DatePicker to;
+    @FXML
+    private JFXButton addNew, delete;
 
-
+    @FXML
+    HBox hbox1, lastHbox;
     @FXML
     private TreeTableView<productTable> tableProduct;
 
@@ -126,6 +135,65 @@ public class ProductsController implements Initializable {
 
     }
 
+    @FXML
+    void searchProduct(ActionEvent event) {
+
+        LocalDate fromEmpty = from.getValue();
+        LocalDate toEmpty = to.getValue();
+        if (fromEmpty != null && toEmpty != null) {
+            productTable_data.clear();
+
+            List<DBObject> dbObjects = productTransaction.SelectAllSuppliers();
+
+            dbObjects.stream().filter(dbObject -> {
+
+                if (
+                        (((Date) dbObject.get("date")).after(Date.from(fromEmpty.atStartOfDay(ZoneId.systemDefault()).toInstant())) ||
+                                ((Date) dbObject.get("date")).compareTo(Date.from(fromEmpty.atStartOfDay(ZoneId.systemDefault()).toInstant())) == 0
+                        )
+
+                                &&
+                                (((Date) dbObject.get("date")).before(Date.from(toEmpty.atStartOfDay(ZoneId.systemDefault()).toInstant())) ||
+                                        ((Date) dbObject.get("date")).compareTo(Date.from(toEmpty.atStartOfDay(ZoneId.systemDefault()).toInstant())) == 0
+                                )
+
+                        ) {
+
+
+                    return true;
+                }
+
+
+                return false;
+            }).forEach(dbObject -> {
+                String supplierId = dbObject.get("supplierId").toString();
+
+                DBObject dbObject1 = supplierTransaction.SelectSupplierById(supplierId);
+
+                System.out.println("dddddddddddddddddd");
+
+                productTable_data.add(new productTable(dbObject.get("_id").toString(),
+                        dbObject.get("name").toString(),
+                        dbObject.get("model").toString(),
+                        dbObject.get("date").toString(),
+                        Double.parseDouble(dbObject.get("amount").toString()),
+                        Double.parseDouble(dbObject.get("buyPrice").toString()),
+                        Double.parseDouble(dbObject.get("profit").toString()),
+                        Double.parseDouble(dbObject.get("sellPrice").toString()),
+                        dbObject1.get("name").toString()
+                ));
+
+            });
+            final TreeItem<productTable> root = new RecursiveTreeItem<productTable>(productTable_data, RecursiveTreeObject::getChildren);
+//        tableview.getColumns().setAll(NaklTable_date, NaklTable_bolisa, NaklTable_carNum, NaklTable_weight, NaklTable_nawlon, NaklTable_ohda, NaklTable_agz, NaklTable_added, NaklTable_mezan, NaklTable_discount, NaklTable_office, NaklTable_clear, NaklTable_type, NaklTable_notes);
+            tableProduct.setRoot(root);
+
+        }
+
+
+    }
+
+
     /**
      * Initializes the controller class.
      */
@@ -133,6 +201,24 @@ public class ProductsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+        hbox1.setPrefWidth(primaryScreenBounds.getWidth() - 180);
+        tableProduct.setPrefWidth(primaryScreenBounds.getWidth() - 190);
+
+//        System.out.println(employeeTable.getLayoutX());
+
+        lastHbox.setLayoutY(primaryScreenBounds.getHeight() - 75);
+//        hbox4.setLayoutY(table.getPrefHeight());
+        tableProduct.setPrefHeight(primaryScreenBounds.getHeight() - 200);
+
+        proBuyPrice.setPrefWidth(tableProduct.getPrefWidth() / 8);
+        proProfit.setPrefWidth(tableProduct.getPrefWidth() / 8);
+        proSellPrice.setPrefWidth(tableProduct.getPrefWidth() / 8);
+        proAmount.setPrefWidth(tableProduct.getPrefWidth() / 8);
+        proSuppName.setPrefWidth(tableProduct.getPrefWidth() / 8);
+        proArriveDate.setPrefWidth(tableProduct.getPrefWidth() / 8);
+        proModel.setPrefWidth(tableProduct.getPrefWidth() / 8);
+        proName.setPrefWidth(tableProduct.getPrefWidth() / 8);
 
         // init table
         proName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<productTable, String>, ObservableValue<String>>() {
@@ -237,10 +323,10 @@ public class ProductsController implements Initializable {
                     dbObject.get("name").toString(),
                     dbObject.get("model").toString(),
                     dbObject.get("date").toString(),
+                    Double.parseDouble(dbObject.get("amount").toString()),
                     Double.parseDouble(dbObject.get("buyPrice").toString()),
                     Double.parseDouble(dbObject.get("profit").toString()),
                     Double.parseDouble(dbObject.get("sellPrice").toString()),
-                    Double.parseDouble(dbObject.get("amount").toString()),
                     dbObject1.get("name").toString()
             ));
 
@@ -250,6 +336,45 @@ public class ProductsController implements Initializable {
         final TreeItem<productTable> root = new RecursiveTreeItem<productTable>(productTable_data, RecursiveTreeObject::getChildren);
 //        tableview.getColumns().setAll(NaklTable_date, NaklTable_bolisa, NaklTable_carNum, NaklTable_weight, NaklTable_nawlon, NaklTable_ohda, NaklTable_agz, NaklTable_added, NaklTable_mezan, NaklTable_discount, NaklTable_office, NaklTable_clear, NaklTable_type, NaklTable_notes);
         tableProduct.setRoot(root);
+
+    }
+
+    @FXML
+    void deleteProductAction(ActionEvent event) {
+
+
+        // check Selection
+        RecursiveTreeItem selectedItem = (RecursiveTreeItem) tableProduct.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+
+            productTable supplierTableSelected = (productTable) selectedItem.getValue();
+
+            BasicDBObject basicDBObject = supplierTransaction.deleteSupplier(supplierTableSelected.id.get());
+
+            if (basicDBObject != null) {
+
+                // delete from table
+                boolean t = productTable_data.remove(supplierTableSelected);
+                final TreeItem<productTable> root = new RecursiveTreeItem<productTable>(productTable_data, RecursiveTreeObject::getChildren);
+                tableProduct.setRoot(root);
+                if (!t) {
+                    dialog dd = new dialog(Alert.AlertType.WARNING, "خظأ", "خطأ فى مسح المنتج من الجدول");
+
+                }
+
+
+            } else {
+                dialog dd = new dialog(Alert.AlertType.WARNING, "خظأ", "خطأ فى مسح المنتج من الداتابيز ");
+
+            }
+
+
+        } else {
+            dialog dd = new dialog(Alert.AlertType.WARNING, "خظأ", "اختر المنتج للمسح");
+
+
+        }
+
 
     }
 
