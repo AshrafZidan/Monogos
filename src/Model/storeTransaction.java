@@ -29,4 +29,55 @@ public class storeTransaction {
 
         return one_store;
     }
+    public  static  BasicDBObject inserٍStore(String Name , String Address  ){
+
+
+        BasicDBObject document = new BasicDBObject();
+        document.put("name", Name);
+        document.put("address", Address);
+
+        storesCollection.insert(document);
+        return document;
+    }
+
+    public static BasicDBObject deleteStore(String id) {
+
+
+        BasicDBObject Query_Delete = new BasicDBObject();
+        Query_Delete.put("_id", new ObjectId(id));
+
+        storesCollection.remove(Query_Delete);
+        return Query_Delete;
+
+
+    }
+
+    public static DBObject SelectStoreByName(String name) {
+        BasicDBObject searchQuery = new BasicDBObject();
+        searchQuery.put("name", name);
+
+        DBObject one_employee = storesCollection.findOne(searchQuery);
+
+
+        return one_employee;
+    }
+
+    public static BasicDBObject updateStore(String id , BasicDBObject objectUpdated) {
+
+
+        BasicDBObject Update_query = new BasicDBObject();
+
+        Update_query.put("_id" , new ObjectId(id));
+
+        BasicDBObject updateObject = new BasicDBObject();
+
+        updateObject.put("$set", objectUpdated);
+
+        storesCollection.update(Update_query, updateObject);
+
+        return updateObject;
+
+
+    }
+
 }

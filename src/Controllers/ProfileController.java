@@ -106,7 +106,7 @@ public class ProfileController implements Initializable {
     private Accordion accordion;
 
     @FXML
-    private TitledPane pane1;
+    private TitledPane pane1 , pane2 , pane3;
 
     @FXML
     private Pane mainPane;
@@ -123,8 +123,7 @@ public class ProfileController implements Initializable {
     @FXML
     private TitledPane pane22;
 
-    @FXML
-    private Pane pane2;
+
 
     @FXML
     private HBox hbox1;
@@ -154,11 +153,9 @@ public class ProfileController implements Initializable {
     @FXML
     private JFXButton savePhone;
 
-    @FXML
-    private TitledPane pane3;
 
     @FXML
-    private Pane mainPane2, infoPane, phonPane, tablePane, userPane;
+    private Pane mainPane2, infoPane, phonPane, tablePane, userPane , pane221;
 
     @FXML
     private Label label2;
@@ -187,34 +184,34 @@ public class ProfileController implements Initializable {
         UserPhone.setDisable(true);
         UserEmail.setDisable(true);
         // TODO
-//        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-//        double screenWidth = primaryScreenBounds.getWidth() - 186;
-//
-//        accordion.setPrefWidth(screenWidth);
-//
-//        double width = primaryScreenBounds.getWidth() - 250;
-//        phonPane.setPrefWidth(screenWidth / 2);
-//        infoPane.setLayoutX(phonPane.getPrefWidth() + 10);
-//
-//        userPane.setPrefWidth(screenWidth / 2);
-//        tablePane.setLayoutX(userPane.getPrefWidth() + 10);
-//
-//        tableUser.setPrefWidth(screenWidth - userPane.getPrefWidth() - 20);
-//        tableUserName.setPrefWidth(tableUser.getPrefWidth() / 5);
-//        tablePhone.setPrefWidth(tableUser.getPrefWidth() / 5);
-//        tableEmail.setPrefWidth(tableUser.getPrefWidth() / 5);
-//        tableAddress.setPrefWidth(tableUser.getPrefWidth() / 5);
-//        tableRole.setPrefWidth(tableUser.getPrefWidth() / 5);
-//
-//        infoPane.setLayoutX(phonPane.getPrefWidth() + 10);
-//        label.setLayoutX(width / 2);
-//
-//        label2.setLayoutX((width / 2) - 160);
-//        logoutBtn.setLayoutX(width / 2);
-//        backup.setLayoutX((width / 2) - 130);
-//        closeBtn.setLayoutX(width / 2);
-//        pane2.setPrefWidth(screenWidth);
-//        accordion.setExpandedPane(pane1);
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+        double screenWidth = primaryScreenBounds.getWidth() - 180;
+
+        accordion.setPrefWidth(screenWidth);
+
+        double width = primaryScreenBounds.getWidth() - 200;
+        phonPane.setPrefWidth(screenWidth / 2);
+        infoPane.setLayoutX(phonPane.getPrefWidth() + 10);
+
+        userPane.setPrefWidth(screenWidth / 2);
+        tablePane.setLayoutX(userPane.getPrefWidth() + 10);
+
+        tableUser.setPrefWidth(screenWidth - userPane.getPrefWidth() - 10);
+        tableUserName.setPrefWidth(tableUser.getPrefWidth() / 5);
+        tablePhone.setPrefWidth(tableUser.getPrefWidth() / 5);
+        tableEmail.setPrefWidth(tableUser.getPrefWidth() / 5);
+        tableAddress.setPrefWidth(tableUser.getPrefWidth() / 5);
+        tableRole.setPrefWidth(tableUser.getPrefWidth() / 5);
+
+        infoPane.setLayoutX(phonPane.getPrefWidth() + 10);
+        label.setLayoutX(width / 2);
+
+        label2.setLayoutX((width / 2) - 160);
+        logoutBtn.setLayoutX(width / 2);
+        backup.setLayoutX((width / 2) - 130);
+        closeBtn.setLayoutX(width / 2);
+        pane2.setPrefWidth(screenWidth);
+        accordion.setExpandedPane(pane1);
 
         // --------------------------------- init table user ---------------------------
         tableUserName.setCellValueFactory(new Callback <TreeTableColumn.CellDataFeatures<ProfileController.tableUser , String>, ObservableValue<String>>() {
@@ -277,7 +274,38 @@ public class ProfileController implements Initializable {
 
 
     @FXML
-    void deleteUserAction(ActionEvent e){}
+    void deleteUserAction(ActionEvent e){
+        // check Selection
+        RecursiveTreeItem selectedItem = (RecursiveTreeItem) tableUser.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+
+            tableUser userTableSelected = (ProfileController.tableUser) selectedItem.getValue();
+            BasicDBObject basicDBObject = userTransaction.deleteUser(userTableSelected.id.get());
+
+            if (basicDBObject != null) {
+                boolean t =  user_data.remove(userTableSelected);
+                final  TreeItem<tableUser>  root = new RecursiveTreeItem <>(user_data , RecursiveTreeObject::getChildren);
+                tableUser.setRoot(root);
+
+                if (!t) {
+                    dialog warning = new dialog(Alert.AlertType.WARNING, "خظأ", "خطأ فى مسح الموظف  من الجدول");
+
+                }
+
+
+            } else {
+                dialog warning = new dialog(Alert.AlertType.WARNING, "خظأ", "خطأ فى مسح المستخدم من الداتابيز ");
+
+            }
+
+
+        } else {
+            dialog dd = new dialog(Alert.AlertType.WARNING, "خظأ", "اختر المستخدم للمسح");
+
+
+        }
+
+    }
 
 
     @FXML

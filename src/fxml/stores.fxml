@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="AnchorPane" nodeOrientation="RIGHT_TO_LEFT" prefHeight="581.0" prefWidth="700.0" style="-fx-background-color: #2f3542;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StoresController">
+
+    <children>
+        <HBox fx:id="hbox1" layoutX="95.0" layoutY="15.0" nodeOrientation="RIGHT_TO_LEFT">
+            <children>
+                <JFXTextField fx:id="searchBox" focusColor="#ff4757" layoutX="238.0" layoutY="33.0" maxWidth="370.0" minWidth="255.0" onAction="#searchByName" prefHeight="31.0" prefWidth="370.0" promptText="أبحث هنا. .." style="-fx-text-fill: #fff;" unFocusColor="#5352ed" />
+                <ImageView fitHeight="25.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="images/filter.png" />
+                    </image>
+                </ImageView>
+                <JFXButton fx:id="searchBtn" layoutX="431.0" layoutY="10.0" onAction="#searchByName" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #3742fa;" text="بحث بالاسم" textFill="#dadada">
+                    <font>
+                        <Font name="Arial Bold" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="30.0" right="10.0" />
+                    </HBox.margin>
+                </JFXButton>
+                <JFXButton fx:id="addNewBtn" onAction="#LoadAddNewPage" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #3742fa;" text="إدخال جديد" textFill="#dadada">
+                    <font>
+                        <Font name="Arial Bold" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </JFXButton>
+                <JFXButton fx:id="updateBtn" onAction="#updatePage" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #3742fa;" text="تعــــــديل" textFill="#dadada">
+                    <font>
+                        <Font name="Arial Bold" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </JFXButton>
+                <JFXButton fx:id="refresh" onAction="#refreshPage" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #3742fa;" text="تحديث البيانات" textFill="#dadada">
+                    <font>
+                        <Font name="Arial Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+            </children>
+        </HBox>
+        <JFXTreeTableView fx:id="storeTable" layoutY="100.0" prefHeight="330.0" prefWidth="671.0">
+            <columns>
+                <TreeTableColumn fx:id="userTable_name" prefWidth="316.0" text="الاسم" />
+                <TreeTableColumn fx:id="userTable_loacation" prefWidth="354.0" text="العنوان " />
+            </columns>
+        </JFXTreeTableView>
+        <HBox fx:id="lastHbox" layoutX="33.0" layoutY="534.0">
+            <children>
+                <JFXButton fx:id="deletBtn" layoutX="34.0" layoutY="535.0" onAction="#deleteStore" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #3742fa;" text="حـــذف فرع" textFill="#dadada">
+                    <font>
+                        <Font name="Arial Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+            </children>
+        </HBox>
+
+
+    </children>
+</Pane>

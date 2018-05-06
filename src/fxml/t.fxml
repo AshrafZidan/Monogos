@@ -1,14 +1,281 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
+<?import java.net.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controllers.ProfileController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProfileController">
+    <children>
+        <Accordion fx:id="accordion" nodeOrientation="RIGHT_TO_LEFT" prefHeight="406.0" prefWidth="600.0">
+            <panes>
+                <TitledPane fx:id="pane1" text="تسجيل الخروج">
+                    <content>
+                        <Pane fx:id="mainPane" layoutX="93.0">
+                            <children>
+                                <Label fx:id="label" layoutX="193.0" layoutY="43.0" text="أضغط هنا لتسجيل الخروج">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXButton fx:id="logoutBtn" layoutX="199.0" layoutY="99.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#logoutAction" style="-fx-background-color: #eb4d4b;" text="   تسجيل الخروج" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="50.0" fitWidth="40.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/logout.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </JFXButton>
+                                <JFXButton fx:id="closeBtn" layoutX="200.0" layoutY="174.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#closeAction" prefHeight="52.0" prefWidth="184.0" style="-fx-background-color: #2ed573;" text="إغلاق البرنامج   " textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="50.0" fitWidth="40.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/close.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </JFXButton>
+                            </children>
+                        </Pane>
+                    </content>
+                </TitledPane>
+                <TitledPane animated="false" text="المستخدمين">
+                    <content>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <Pane fx:id="tablePane" layoutX="356.0" layoutY="20.0" prefHeight="266.0" prefWidth="441.0">
+                                    <children>
+                                        <TreeTableView fx:id="tableUser" prefHeight="181.0" prefWidth="367.0">
+                                            <columns>
+                                                <TreeTableColumn fx:id="tableUserName" prefWidth="52.0" text="الاسم" />
+                                                <TreeTableColumn fx:id="tableEmail" prefWidth="67.0" text="الايميل" />
+                                                <TreeTableColumn fx:id="tableAddress" prefWidth="104.0" text="العنوان" />
+                                                <TreeTableColumn fx:id="tablePhone" prefWidth="78.0" text="الموبايل" />
+                                                <TreeTableColumn fx:id="tableRole" prefWidth="78.0" text="الصلاحية" />
+                                            </columns>
+                                        </TreeTableView>
+                                        <JFXButton fx:id="deleteUser" buttonType="RAISED" layoutX="217.0" layoutY="191.0" onAction="#deleteUserAction" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #e74c3c;" text="مسح" textFill="WHITE">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </JFXButton>
+                                    </children>
+                                </Pane>
+                                <Pane fx:id="userPane" layoutX="10.0" layoutY="20.0">
+                                    <children>
+                                        <TextField fx:id="newUserName" layoutX="5.0" prefHeight="31.0" prefWidth="295.0" promptText="اسم المستخدم">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                        </TextField>
+                                        <TextField fx:id="newUserAddress" layoutX="4.0" layoutY="39.0" prefHeight="31.0" prefWidth="295.0" promptText="العنوان">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                        </TextField>
+                                        <TextField fx:id="newUserEmail" layoutX="5.0" layoutY="82.0" prefHeight="31.0" prefWidth="295.0" promptText="الايميل">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                        </TextField>
+                                        <TextField fx:id="newUserPhone" layoutX="5.0" layoutY="122.0" prefHeight="31.0" prefWidth="294.0" promptText="رقم الموبايل">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                        </TextField>
+                                        <PasswordField fx:id="newUserPass" layoutX="5.0" layoutY="162.0" prefHeight="31.0" prefWidth="294.0" promptText="الرقم السرى">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                        </PasswordField>
+                                        <JFXButton fx:id="addUser" buttonType="RAISED" layoutX="100.0" layoutY="244.0" onAction="#addUserAction" prefHeight="37.0" prefWidth="100.0" styleClass="round-red" text="اضافة" textFill="WHITE">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </JFXButton>
+                                    </children>
+                                </Pane>
+                                <JFXRadioButton layoutX="63.0" layoutY="231.0" selected="true" text="مستخدم عادى">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="role" />
+                                    </toggleGroup>
+                                </JFXRadioButton>
+                                <JFXRadioButton layoutX="206.0" layoutY="230.0" text="أدمن" toggleGroup="$role" />
+                            </children>
+                        </Pane>
+                    </content>
+                </TitledPane>
+                <TitledPane fx:id="pane2" text="معلومات الحساب">
+                    <content>
+                        <Pane fx:id="pane2">
+                            <children>
+                                <Pane fx:id="infoPane" layoutX="400.0" layoutY="30.0">
+                                    <children>
+                                        <JFXButton fx:id="save" layoutX="168.0" layoutY="146.0" onAction="#saveAction" prefHeight="39.0" prefWidth="165.0" style="-fx-background-color: #2ed573;" text="تعديل البيانات " textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold Italic" size="18.0" />
+                                            </font>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </JFXButton>
+                                        <Label prefWidth="170.0" text="كلمة السر الحالية :">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <PasswordField fx:id="oldPass" layoutX="149.0" prefHeight="25.0" prefWidth="200.0">
+                                            <font>
+                                                <Font size="17.0" />
+                                            </font>
+                                        </PasswordField>
+                                        <Label layoutX="-0.0" layoutY="48.0" prefWidth="170.0" text="كلمة السر الجديدة :">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <PasswordField fx:id="newPass" layoutX="150.0" layoutY="46.0" prefHeight="25.0" prefWidth="200.0">
+                                            <font>
+                                                <Font size="17.0" />
+                                            </font>
+                                        </PasswordField>
+                                        <Label layoutY="91.0" prefWidth="170.0" text="تأكيد كلمة السر :">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <PasswordField fx:id="confirmPass" layoutX="150.0" layoutY="92.0" prefHeight="25.0" prefWidth="200.0">
+                                            <font>
+                                                <Font size="17.0" />
+                                            </font>
+                                        </PasswordField>
+                                    </children>
+                                </Pane>
+                                <Pane fx:id="phonPane" layoutY="30.0">
+                                    <children>
+                                        <Label layoutX="19.0" layoutY="-1.0" prefWidth="170.0" text="اسم المستخدم : ">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="UserName" layoutX="142.0" layoutY="-1.0" prefHeight="33.0" prefWidth="200.0">
+                                            <font>
+                                                <Font size="17.0" />
+                                            </font>
+                                        </TextField>
+                                        <Label layoutX="19.0" layoutY="48.0" prefWidth="170.0" text="العنوان: ">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="UserAddress" layoutX="142.0" layoutY="48.0" prefHeight="33.0" prefWidth="200.0">
+                                            <font>
+                                                <Font size="17.0" />
+                                            </font>
+                                        </TextField>
+                                        <Label layoutX="7.0" layoutY="96.0" prefWidth="170.0" text="رقم الموبايل  : ">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="UserPhone" layoutX="141.0" layoutY="90.0" prefHeight="33.0" prefWidth="200.0">
+                                            <font>
+                                                <Font size="17.0" />
+                                            </font>
+                                        </TextField>
+                                        <Label alignment="CENTER" layoutX="-4.0" layoutY="143.0" prefWidth="170.0" text="الايميل : ">
+                                            <font>
+                                                <Font name="System Bold" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="UserEmail" layoutX="141.0" layoutY="136.0" prefHeight="33.0" prefWidth="200.0">
+                                            <font>
+                                                <Font size="17.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                </Pane>
+                                <JFXButton fx:id="loadInfoBtn" layoutX="178.0" layoutY="210.0" onAction="#loadInfoAction" prefHeight="33.0" style="-fx-background-color: #2ed573;" text="تحميل البيانات" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold Italic" size="18.0" />
+                                    </font>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </JFXButton>
+                            </children>
+                        </Pane>
+                    </content>
+                </TitledPane>
+                <TitledPane fx:id="pane3" text="عمل نسخة احتياطية">
+                    <content>
+                        <Pane fx:id="mainPane2" layoutX="93.0">
+                            <children>
+                                <Label fx:id="label2" layoutX="193.0" layoutY="43.0" text="من هنا يمكنك عمل نسخة احتياطيه من الداتا بيز">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <JFXButton fx:id="backup" layoutX="199.0" layoutY="99.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#backupAction" style="-fx-background-color: #2ed573;" text="  عمل نسخة احتياطية " textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="70.0" fitWidth="70.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/Backups.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </JFXButton>
+
+                            </children>
+                        </Pane>
+                    </content>
+
+                </TitledPane>
+            </panes>
+        </Accordion>
+      
+    </children>
+   <stylesheets>
+      <URL value="@../styles/accordion.css" />
+      <URL value="@../styles/Main.css" />
+   </stylesheets>
 
 </AnchorPane>

@@ -1,20 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
-
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 
 import Model.employeeTransaction;
 import Model.storeTransaction;
-import Model.supplierTransaction;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import com.mongodb.BasicDBObject;
@@ -27,12 +15,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 
-/**
- * FXML Controller class
- *
- * @author Zi-D-aN
- */
-public class CreateNewEmployeeController implements Initializable {
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class CreateNewStoreController  implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -52,7 +40,7 @@ public class CreateNewEmployeeController implements Initializable {
     @FXML
     private JFXTextField EmployeeEmail;
     @FXML
-     private JFXComboBox storeComBox;
+    private JFXComboBox storeComBox;
 
     List<String> _idlist;
 
@@ -96,7 +84,7 @@ public class CreateNewEmployeeController implements Initializable {
 
 
         List<String> Namelist = new ArrayList<String>();
-          _idlist = new ArrayList<String>();
+        _idlist = new ArrayList<String>();
 
 
 
@@ -126,12 +114,11 @@ public class CreateNewEmployeeController implements Initializable {
 
         List<String> objID =  _idlist;
         int index = storeComBox.getSelectionModel().getSelectedIndex();
-       String Store_id =  objID.get(index).toString();
+        String Store_id =  objID.get(index).toString();
         System.out.println(Store_id);
 
-    return Store_id;
+        return Store_id;
 
     }
-
 
 }

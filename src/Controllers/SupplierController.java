@@ -191,10 +191,10 @@ public class SupplierController implements Initializable {
         try {
             Stage home = new Stage();
 
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/CreateNewSupplier.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/CreateNewStor.fxml"));
             Scene scene = new Scene(root);
 
-            home.setTitle("Create New Supplier");
+            home.setTitle("Create New Store");
 
             home.setScene(scene);
             home.setResizable(false);

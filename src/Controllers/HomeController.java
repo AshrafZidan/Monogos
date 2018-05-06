@@ -179,7 +179,7 @@ public class HomeController implements Initializable {
 
             FXMLLoader loader = new FXMLLoader();
 //            loader.setController(new moneyController());
-            loader.setLocation(getClass().getResource("/Fxml/money.fxml"));
+            loader.setLocation(getClass().getResource("/Fxml/stores.fxml"));
             holderPane = loader.load();
 
 

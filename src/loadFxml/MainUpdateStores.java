@@ -1,6 +1,5 @@
 package loadFxml;
 
-import Controllers.EmployeeController;
 import Controllers.UpdateEmployeeController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,20 +8,19 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MainUpdateEmployee {
-
-    public MainUpdateEmployee(String id) {
+public class MainUpdateStores {
+    public MainUpdateStores(String id) {
 
         try {
 
             UpdateEmployeeController.employeeId = id;
             Stage home = new Stage();
 
-            Parent p = FXMLLoader.load(getClass().getResource("/fxml/updateEmployee.fxml"));
-;
+            Parent p = FXMLLoader.load(getClass().getResource("/fxml/updateStore.fxml"));
+
             Scene scene = new Scene(p);
 
-            home.setTitle("Update Employee");
+            home.setTitle("Update Store");
 
             home.setScene(scene);
             home.setResizable(false);
@@ -39,8 +37,4 @@ public class MainUpdateEmployee {
 
 
     }
-
-
-
-
 }

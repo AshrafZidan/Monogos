@@ -55,7 +55,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="stores" contentDisplay="TOP" onAction="#MainButtonAction" prefHeight="300.0" prefWidth="181.0" styleClass="tab" text="المخازن" textAlignment="CENTER" textFill="#33d9b2" VBox.vgrow="ALWAYS">
+            <JFXButton fx:id="stores" contentDisplay="TOP" onAction="#MainButtonAction" prefHeight="300.0" prefWidth="181.0" styleClass="tab" text="المعارض" textAlignment="CENTER" textFill="#33d9b2" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

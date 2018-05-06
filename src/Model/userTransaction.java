@@ -66,4 +66,21 @@ public class userTransaction {
 
     }
 
+
+    public static BasicDBObject deleteUser(String id) {
+
+
+        BasicDBObject Query_Delete = new BasicDBObject();
+        Query_Delete.put("_id", new ObjectId(id));
+
+        collection.remove(Query_Delete);
+        return Query_Delete;
+
+
+    }
+
+
 }
+
+
+

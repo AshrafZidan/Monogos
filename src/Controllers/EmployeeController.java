@@ -65,7 +65,7 @@ public class EmployeeController implements Initializable {
     private  JFXButton refresh;
 
     @FXML
-    private  JFXButton deletBtn;
+    private  JFXButton deletBtn , searchBtn;
 
     @FXML
     private JFXTextField searchBox;
@@ -238,6 +238,8 @@ public class EmployeeController implements Initializable {
 
     }
 
+
+
     @FXML
     public  void refreshPage(ActionEvent ev){
 
@@ -262,12 +264,12 @@ public class EmployeeController implements Initializable {
     public  void deleteEmployee(ActionEvent ev){
 
 
-        // check Selection
+               // check Selection
         RecursiveTreeItem selectedItem = (RecursiveTreeItem) employeeTable.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
 
-              EmployeeTable employeeTableSelected = (EmployeeController.EmployeeTable) selectedItem.getValue();
-              BasicDBObject basicDBObject = employeeTransaction.deleteEmployee(employeeTableSelected.id.get());
+            EmployeeTable employeeTableSelected = (EmployeeController.EmployeeTable) selectedItem.getValue();
+            BasicDBObject basicDBObject = employeeTransaction.deleteEmployee(employeeTableSelected.id.get());
 
             if (basicDBObject != null) {
                 boolean t =  employeeTable_data.remove(employeeTableSelected);
@@ -300,7 +302,7 @@ public class EmployeeController implements Initializable {
         String query = searchBox.getText();
         DBObject dbObject = employeeTransaction.SelectEmployeeByName(query);
 
-        if (query == ""){
+        if (query.equals("")){
             dialog warning = new dialog(Alert.AlertType.WARNING, "نتيجة", "إدخل اسم موظف للبحث");
         }
         if (dbObject == null){

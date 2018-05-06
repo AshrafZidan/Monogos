@@ -75,7 +75,7 @@
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Pane fx:id="tablePane" layoutX="312.0" layoutY="20.0" prefHeight="266.0" prefWidth="441.0">
+                        <Pane fx:id="tablePane" layoutX="356.0" layoutY="20.0" prefHeight="266.0" prefWidth="441.0">
                            <children>
                               <TreeTableView fx:id="tableUser" prefHeight="181.0" prefWidth="367.0">
                                  <columns>
@@ -86,14 +86,14 @@
                                     <TreeTableColumn fx:id="tableRole" prefWidth="78.0" text="الصلاحية" />
                                  </columns>
                               </TreeTableView>
-                              <JFXButton fx:id="deleteUser" buttonType="RAISED" layoutX="289.0" layoutY="187.0" onAction="#deleteUserAction" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #e74c3c;" text="مسح" textFill="WHITE">
+                              <JFXButton fx:id="deleteUser" buttonType="RAISED" layoutX="217.0" layoutY="191.0" onAction="#deleteUserAction" prefHeight="37.0" prefWidth="100.0" style="-fx-background-color: #e74c3c;" text="مسح" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </JFXButton>
                            </children>
                         </Pane>
-                        <Pane fx:id="userPane" layoutX="10.0" layoutY="20.0" prefHeight="201.0" prefWidth="395.0">
+                        <Pane fx:id="userPane" layoutX="10.0" layoutY="20.0">
                            <children>
                               <TextField fx:id="newUserName" layoutX="5.0" prefHeight="31.0" prefWidth="295.0" promptText="اسم المستخدم">
                                  <font>
@@ -137,9 +137,9 @@
                   </Pane>
                </content>
             </TitledPane>
-            <TitledPane fx:id="pane22" text="معلومات الحساب">
+            <TitledPane fx:id="pane2" text="معلومات الحساب">
                <content>
-                  <Pane fx:id="pane2">
+                  <Pane fx:id="pane221">
                      <children>
                         <Pane fx:id="infoPane" layoutX="400.0" layoutY="30.0">
                            <children>
@@ -227,7 +227,7 @@
                               </TextField>
                            </children>
                         </Pane>
-                        <JFXButton fx:id="loadInfoBtn" layoutX="196.0" layoutY="218.0" onAction="#loadInfoAction" prefHeight="33.0" style="-fx-background-color: #2ed573;" text="تحميل البيانات" textFill="WHITE">
+                        <JFXButton fx:id="loadInfoBtn" layoutX="178.0" layoutY="224.0" onAction="#loadInfoAction" prefHeight="33.0" style="-fx-background-color: #2ed573;" text="تحميل البيانات" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="18.0" />
                            </font>
@@ -271,6 +271,11 @@
             </TitledPane>
          </panes>
       </Accordion>
+
    </children>
+   <stylesheets>
+      <URL value="@../styles/accordion.css" />
+      <URL value="@../styles/Main.css" />
+   </stylesheets>
 
 </AnchorPane>
