@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="249.0" prefWidth="448.0" style="-fx-background-color: #2f3542;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UpdateEmployeeController">
+    <stylesheets>
+        <URL value="@createnewsupplier.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="362.0" layoutY="76.0" prefHeight="17.0" prefWidth="79.0" text="ألاسم :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="StoreName" layoutX="98.0" layoutY="60.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
+      <JFXTextField fx:id="StoreAddress" layoutX="97.0" layoutY="104.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
+      <Label layoutX="362.0" layoutY="116.0" prefHeight="17.0" prefWidth="79.0" text="العنوان :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="updateBtn" layoutX="121.0" layoutY="187.0" onAction="#storeUpdateAction" prefHeight="37.0" prefWidth="216.0" style="-fx-background-color: #5352ed;" text="تحديث البيانات" textFill="#dadada">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

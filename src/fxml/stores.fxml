@@ -16,7 +16,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane id="AnchorPane" nodeOrientation="RIGHT_TO_LEFT" prefHeight="581.0" prefWidth="700.0" style="-fx-background-color: #2f3542;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StoresController">
+<Pane id="AnchorPane" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: #2f3542;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StoresController">
 
     <children>
         <HBox fx:id="hbox1" layoutX="95.0" layoutY="15.0" nodeOrientation="RIGHT_TO_LEFT">

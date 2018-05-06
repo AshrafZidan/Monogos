@@ -9,45 +9,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="357.0" prefWidth="448.0" style="-fx-background-color: #2f3542;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CreateNewStoreController">
+<AnchorPane id="AnchorPane" prefHeight="226.0" prefWidth="448.0" style="-fx-background-color: #2f3542;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CreateNewStoreController">
     <stylesheets>
         <URL value="@createnewsupplier.css" />
     </stylesheets>
     <children>
-        <Label layoutX="43.0" layoutY="67.0" prefHeight="17.0" prefWidth="79.0" text="Name :" textFill="#dadada">
+      <Label layoutX="387.0" layoutY="76.0" prefHeight="17.0" prefWidth="79.0" text="اسم الفرع :" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+        <JFXTextField fx:id="StoreName" layoutX="101.0" layoutY="60.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
+        <Label layoutX="387.0" layoutY="120.0" prefHeight="17.0" prefWidth="79.0" text="العنوان :" textFill="#dadada">
             <font>
                 <Font name="Arial Bold" size="15.0" />
             </font>
         </Label>
-        <JFXTextField fx:id="EmployeeName" layoutX="101.0" layoutY="60.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
-        <JFXTextField fx:id="EmployeeEmail" layoutX="101.0" layoutY="104.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
-        <Label layoutX="43.0" layoutY="111.0" prefHeight="17.0" prefWidth="79.0" text="Email :" textFill="#dadada">
-            <font>
-                <Font name="Arial Bold" size="15.0" />
-            </font>
-        </Label>
-        <JFXTextField fx:id="EmployeePhone" layoutX="101.0" layoutY="148.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
-        <Label layoutX="43.0" layoutY="155.0" prefHeight="17.0" prefWidth="79.0" text="phone :" textFill="#dadada">
-            <font>
-                <Font name="Arial Bold" size="15.0" />
-            </font>
-        </Label>
-        <JFXButton fx:id="addEmployee" layoutX="121.0" layoutY="306.0" onAction="#addEmployee" prefHeight="37.0" prefWidth="216.0" style="-fx-background-color: #5352ed;" text="إدخال جديد" textFill="#dadada">
+        <JFXTextField fx:id="StoreAddress" layoutX="101.0" layoutY="104.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
+        <JFXButton fx:id="addStore" layoutX="121.0" layoutY="234.0" onAction="#addStoreAction" prefHeight="37.0" prefWidth="216.0" style="-fx-background-color: #5352ed;" text="إدخال جديد" textFill="#dadada">
             <font>
                 <Font name="System Bold" size="16.0" />
             </font>
         </JFXButton>
-        <Label layoutX="33.0" layoutY="199.0" prefHeight="17.0" prefWidth="79.0" text="Address:" textFill="#dadada">
-            <font>
-                <Font name="Arial Bold" size="15.0" />
-            </font>
-        </Label>
-        <JFXTextField fx:id="EmployeeAddress" layoutX="100.0" layoutY="192.0" maxWidth="255.0" minWidth="211.0" prefHeight="31.0" prefWidth="255.0" style="-fx-text-fill: #fff;" />
-        <JFXComboBox fx:id="storeComBox" layoutX="112.0" layoutY="242.0" prefHeight="25.0" prefWidth="150.0" promptText="Store" style="-fx-text-fill: #fff; -fx-background-color: #dadada;" />
-        <Label layoutX="43.0" layoutY="246.0" prefHeight="17.0" prefWidth="79.0" text="Store :" textFill="#dadada">
-            <font>
-                <Font name="Arial Bold" size="15.0" />
-            </font>
-        </Label>
     </children>
 </AnchorPane>
