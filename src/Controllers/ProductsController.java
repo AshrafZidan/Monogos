@@ -6,23 +6,35 @@
 package Controllers;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import Model.productTransaction;
+import Model.supplierTransaction;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import com.mongodb.DBObject;
+import dialogs.dialog;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import loadFxml.MainUpdateProduct;
 
 /**
@@ -31,6 +43,7 @@ import loadFxml.MainUpdateProduct;
  * @author Zi-D-aN
  */
 public class ProductsController implements Initializable {
+    ObservableList<productTable> productTable_data = FXCollections.observableArrayList();
 
 
     @FXML
@@ -38,40 +51,51 @@ public class ProductsController implements Initializable {
 
 
     @FXML
-    private TreeTableView<?> tableProduct;
+    private TreeTableView<productTable> tableProduct;
 
     @FXML
-    private TreeTableColumn<?, ?> proName;
+    private TreeTableColumn<productTable, String> proName;
 
     @FXML
-    private TreeTableColumn<?, ?> proModel;
+    private TreeTableColumn<productTable, String> proModel;
 
     @FXML
-    private TreeTableColumn<?, ?> proAmount;
+    private TreeTableColumn<productTable, Double> proAmount;
 
     @FXML
-    private TreeTableColumn<?, ?> proBuyPrice;
+    private TreeTableColumn<productTable, Double> proBuyPrice;
 
     @FXML
-    private TreeTableColumn<?, ?> proProfit;
+    private TreeTableColumn<productTable, Double> proProfit;
 
     @FXML
-    private TreeTableColumn<?, ?> proSellPrice;
+    private TreeTableColumn<productTable, Double> proSellPrice;
 
     @FXML
-    private TreeTableColumn<?, ?> proArriveDate;
+    private TreeTableColumn<productTable, String> proArriveDate;
 
     @FXML
-    private TreeTableColumn<?, ?> proSuppName;
+    private TreeTableColumn<productTable, String> proSuppName;
 
 
     @FXML
     void updateProductAction(ActionEvent event) {
 
 //        get selection First
+        RecursiveTreeItem selectedItem = (RecursiveTreeItem) tableProduct.getSelectionModel().getSelectedItem();
+
+        if (selectedItem != null) {
+            // get selected Value
+            productTable supplierTable = (productTable) selectedItem.getValue();
+
+            MainUpdateProduct mainUpdateProduct = new MainUpdateProduct(supplierTable.getId());
 
 
-        MainUpdateProduct mainUpdateProduct = new MainUpdateProduct("");
+        } else {
+            dialog dd = new dialog(Alert.AlertType.WARNING, "خظأ", "اختر المنتج للتعديل");
+
+        }
+
     }
 
     @FXML
@@ -111,6 +135,121 @@ public class ProductsController implements Initializable {
 
 
         // init table
+        proName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<productTable, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<productTable, String> param) {
+                return param.getValue().getValue().name;
+            }
+
+        });
+        proModel.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<productTable, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<productTable, String> param) {
+                return param.getValue().getValue().model;
+            }
+
+        });
+        proArriveDate.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<productTable, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<productTable, String> param) {
+                return param.getValue().getValue().date;
+            }
+
+        });
+        proSuppName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<productTable, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<productTable, String> param) {
+                return param.getValue().getValue().suppName;
+            }
+
+        });
+
+        proAmount.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<productTable, Double>, ObservableValue<Double>>() {
+            @Override
+            public ObservableValue<Double> call(TreeTableColumn.CellDataFeatures<productTable, Double> param) {
+                return param.getValue().getValue().amount.asObject();
+            }
+
+        });
+        proBuyPrice.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<productTable, Double>, ObservableValue<Double>>() {
+            @Override
+            public ObservableValue<Double> call(TreeTableColumn.CellDataFeatures<productTable, Double> param) {
+                return param.getValue().getValue().buyPrice.asObject();
+            }
+
+        });
+        proSellPrice.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<productTable, Double>, ObservableValue<Double>>() {
+            @Override
+            public ObservableValue<Double> call(TreeTableColumn.CellDataFeatures<productTable, Double> param) {
+                return param.getValue().getValue().sellPrice.asObject();
+            }
+
+        });
+        proProfit.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<productTable, Double>, ObservableValue<Double>>() {
+            @Override
+            public ObservableValue<Double> call(TreeTableColumn.CellDataFeatures<productTable, Double> param) {
+                return param.getValue().getValue().profit.asObject();
+            }
+
+        });
+
+
+        List<DBObject> listProducts = productTransaction.SelectAllSuppliers();
+        listProducts.stream().forEach(dbObject -> {
+
+            String supplierId = dbObject.get("supplierId").toString();
+
+            DBObject dbObject1 = supplierTransaction.SelectSupplierById(supplierId);
+
+            productTable_data.add(new productTable(dbObject.get("_id").toString(),
+                    dbObject.get("name").toString(),
+                    dbObject.get("model").toString(),
+                    dbObject.get("date").toString(),
+                    Double.parseDouble(dbObject.get("amount").toString()),
+                    Double.parseDouble(dbObject.get("buyPrice").toString()),
+                    Double.parseDouble(dbObject.get("profit").toString()),
+                    Double.parseDouble(dbObject.get("sellPrice").toString()),
+                    dbObject1.get("name").toString()
+            ));
+
+        });
+
+
+        final TreeItem<productTable> root = new RecursiveTreeItem<productTable>(productTable_data, RecursiveTreeObject::getChildren);
+//        tableview.getColumns().setAll(NaklTable_date, NaklTable_bolisa, NaklTable_carNum, NaklTable_weight, NaklTable_nawlon, NaklTable_ohda, NaklTable_agz, NaklTable_added, NaklTable_mezan, NaklTable_discount, NaklTable_office, NaklTable_clear, NaklTable_type, NaklTable_notes);
+        tableProduct.setRoot(root);
+        tableProduct.setShowRoot(false);
+
+    }
+
+    @FXML
+    void refreshTableAction(ActionEvent event) {
+        productTable_data.clear();
+
+        List<DBObject> listProducts = productTransaction.SelectAllSuppliers();
+        listProducts.stream().forEach(dbObject -> {
+
+            String supplierId = dbObject.get("supplierId").toString();
+
+            DBObject dbObject1 = supplierTransaction.SelectSupplierById(supplierId);
+
+            productTable_data.add(new productTable(dbObject.get("_id").toString(),
+                    dbObject.get("name").toString(),
+                    dbObject.get("model").toString(),
+                    dbObject.get("date").toString(),
+                    Double.parseDouble(dbObject.get("buyPrice").toString()),
+                    Double.parseDouble(dbObject.get("profit").toString()),
+                    Double.parseDouble(dbObject.get("sellPrice").toString()),
+                    Double.parseDouble(dbObject.get("amount").toString()),
+                    dbObject1.get("name").toString()
+            ));
+
+        });
+
+
+        final TreeItem<productTable> root = new RecursiveTreeItem<productTable>(productTable_data, RecursiveTreeObject::getChildren);
+//        tableview.getColumns().setAll(NaklTable_date, NaklTable_bolisa, NaklTable_carNum, NaklTable_weight, NaklTable_nawlon, NaklTable_ohda, NaklTable_agz, NaklTable_added, NaklTable_mezan, NaklTable_discount, NaklTable_office, NaklTable_clear, NaklTable_type, NaklTable_notes);
+        tableProduct.setRoot(root);
 
     }
 

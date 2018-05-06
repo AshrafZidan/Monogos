@@ -59,7 +59,7 @@ public class updateProductController implements Initializable {
     List<String> supplierIds;
     List<DBObject> suppliers;
 
-    static String productId;
+    public static String productId;
 
     @FXML
     void addAction(ActionEvent event) {
@@ -105,11 +105,10 @@ public class updateProductController implements Initializable {
             basicDBObject.put("date", Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
             basicDBObject.put("supplierId", supplierId);
 
-            BasicDBObject basicDBObject1 = productTransaction.insertSupplier(basicDBObject);
+            BasicDBObject basicDBObject1 = productTransaction.updateSupplier(supplierId, basicDBObject);
             if (basicDBObject1 != null) {
-
                 resetFields();
-                dialog dd = new dialog(Alert.AlertType.CONFIRMATION, "Done ! ", "Done create Product");
+                dialog dd = new dialog(Alert.AlertType.CONFIRMATION, "تم", "تم التعديل");
 
 
             }
@@ -157,15 +156,20 @@ public class updateProductController implements Initializable {
         // select By productId
         DBObject dbObject = productTransaction.SelectSupplierById(productId);
 
-//        name.setText(dbObject.get("").toString());
-//        model.setText(dbObject.get("").toString());
-//        amount.setText(dbObject.get("").toString());
-//        buyPrice.setText(dbObject.get("").toString());
-//        profit.setText(dbObject.get("").toString());
-//        sellPrice.setText(dbObject.get("").toString());
-//        date.setValue(null);
-//        supplierName.setValue(dbObject.get("").toString());
 
+        String suppId = dbObject.get("supplierId").toString();
+        DBObject dbObject1 = supplierTransaction.SelectSupplierById(suppId);
+
+
+        name.setText(dbObject.get("name").toString());
+        model.setText(dbObject.get("model").toString());
+        amount.setText(dbObject.get("amount").toString());
+        buyPrice.setText(dbObject.get("buyPrice").toString());
+        profit.setText(dbObject.get("profit").toString());
+        sellPrice.setText(dbObject.get("sellPrice").toString());
+        date.setValue(LocalDate.now());
+        supplierName.setValue(dbObject1.get("name").toString());
+        name.setText("Ahmed mohamed");
 
     }
 }

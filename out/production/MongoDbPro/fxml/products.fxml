@@ -3,100 +3,19 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.net.URL?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProductsController">
     <stylesheets>
         <URL value="@products.css" />
+      <URL value="@employee.css" />
     </stylesheets>
    <children>
-      <Pane layoutX="14.0" layoutY="151.0" prefHeight="279.0" prefWidth="301.0" style="-fx-background-color: #2f3542;">
-         <children>
-            <ImageView fitHeight="100.0" fitWidth="121.0" layoutX="105.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="Images/download.jpg" />
-               </image>
-            </ImageView>
-            <Label layoutX="35.0" layoutY="170.0" prefHeight="28.0" prefWidth="181.0" text="Description of this product" textFill="#dadada" />
-            <Label layoutX="87.0" layoutY="204.0" prefHeight="25.0" prefWidth="51.0" text="50 $" textFill="#dadada">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="125.0" layoutY="134.0" prefHeight="25.0" prefWidth="51.0" text="Audi" textFill="#dadada">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="36.0" layoutY="207.0" prefHeight="17.0" prefWidth="51.0" text="Price :" textFill="#dadada">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="36.0" layoutY="237.0" text="arrival Date:" textFill="#dadada">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="115.0" layoutY="235.0" prefHeight="25.0" prefWidth="98.0" text="24/3/2018" textFill="#dadada">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="37.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                  <Image url="Images/delete.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Pane layoutX="376.0" layoutY="151.0" prefHeight="279.0" prefWidth="301.0" style="-fx-background-color: #2f3542;">
-         <children>
-            <ImageView fitHeight="100.0" fitWidth="121.0" layoutX="105.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="Images/download.jpg" />
-               </image>
-            </ImageView>
-            <Label layoutX="15.0" layoutY="180.0" prefHeight="28.0" prefWidth="181.0" text="Description of this product" textFill="#dadada" />
-            <Label layoutX="125.0" layoutY="134.0" prefHeight="25.0" prefWidth="51.0" text="Audi" textFill="#dadada">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="96.0" layoutY="241.0" prefHeight="25.0" prefWidth="98.0" text="24/3/2018" textFill="#dadada">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="17.0" layoutY="243.0" text="arrival Date:" textFill="#dadada">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="17.0" layoutY="211.0" prefHeight="17.0" prefWidth="51.0" text="Price :" textFill="#dadada">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="79.0" layoutY="208.0" prefHeight="25.0" prefWidth="51.0" text="50 $" textFill="#dadada">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="37.0" layoutX="17.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                
-                 <image>
-                  <Image url="Images/delete.png" />
-               </image>
-            </ImageView>
-                 
-         </children>
-      </Pane>
       <JFXButton fx:id="addNew" layoutX="27.0" layoutY="14.0" onAction="#addNewAction" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #2f3542;" text="Add New" textFill="#dadada">
          <font>
             <Font name="Arial Bold" size="14.0" />
@@ -109,7 +28,24 @@
                </image>
       </ImageView>
       
-      <JFXButton layoutX="27.0" layoutY="76.0" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #2f3542;" text="Update" textFill="#dadada">
+      <JFXButton fx:id="updateProduct" layoutX="27.0" layoutY="76.0" onAction="#updateProductAction" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #2f3542;" text="Update" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <TreeTableView fx:id="tableProduct" layoutX="15.0" layoutY="163.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="346.0" prefWidth="671.0">
+        <columns>
+          <TreeTableColumn fx:id="proName" prefWidth="85.0" text="اسم المنتج" />
+          <TreeTableColumn fx:id="proModel" prefWidth="65.0" text="المودل" />
+            <TreeTableColumn fx:id="proAmount" prefWidth="83.0" text="الكميه" />
+            <TreeTableColumn fx:id="proBuyPrice" prefWidth="90.0" text="سعر الشراء" />
+            <TreeTableColumn fx:id="proProfit" prefWidth="69.0" text="الربح" />
+            <TreeTableColumn fx:id="proSellPrice" prefWidth="73.0" text="سعر البيع" />
+            <TreeTableColumn fx:id="proArriveDate" prefWidth="111.0" text="تاريخ الوصول" />
+            <TreeTableColumn fx:id="proSuppName" prefWidth="92.0" text="اسم المورد" />
+        </columns>
+      </TreeTableView>
+      <JFXButton fx:id="refreshTable" layoutX="27.0" layoutY="120.0" onAction="#refreshTableAction" prefHeight="37.0" prefWidth="126.0" style="-fx-background-color: #2f3542;" text="refreshTable" textFill="#dadada">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>

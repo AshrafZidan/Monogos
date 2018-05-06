@@ -45,5 +45,10 @@
             <TreeTableColumn fx:id="proSuppName" prefWidth="92.0" text="اسم المورد" />
         </columns>
       </TreeTableView>
+      <JFXButton fx:id="refreshTable" layoutX="27.0" layoutY="120.0" onAction="#refreshTableAction" prefHeight="37.0" prefWidth="126.0" style="-fx-background-color: #2f3542;" text="refreshTable" textFill="#dadada">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

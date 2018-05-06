@@ -1,6 +1,7 @@
 package loadFxml;
 
 import Controllers.UpdateSupplierController;
+import Controllers.updateProductController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,7 +16,7 @@ public class MainUpdateProduct {
     public MainUpdateProduct(String id) {
 
         try {
-            UpdateSupplierController.supplierId = id;
+            updateProductController.productId = id;
             Stage home = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader();
             Parent p = fxmlLoader.load(getClass().getResource("/fxml/updateProduct.fxml"));
