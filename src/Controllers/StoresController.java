@@ -108,22 +108,23 @@ public class StoresController implements Initializable {
         // Select All Stores
 
         List<DBObject> dbObjects = storeTransaction.selectAllStores();
-//        System.out.println(dbObjects);
+        System.out.println(dbObjects);
+       dbObjects.stream().forEach(dbObject -> {
+                    storeTable_data.add(new StoresController.storeTable(
 
-        dbObjects.stream().forEach(ee -> {
-       storeTable_data.add(new StoresController.storeTable(ee.get("_id").toString(), ee.get("name").toString(), ee.get("location").toString()));
+                            dbObject.get("_id").toString(),
+                            dbObject.get("name").toString(),
+                            dbObject.get("location").toString() ));
 
 
-                });
+                }
+        );
 
 
-        final TreeItem<StoresController.storeTable> root = new RecursiveTreeItem<storeTable>(storeTable_data, RecursiveTreeObject::getChildren);
+        final TreeItem<StoresController.storeTable> root = new RecursiveTreeItem<StoresController.storeTable>(storeTable_data, RecursiveTreeObject::getChildren);
 
         storeTable.setRoot(root);
         storeTable.setShowRoot(false);
-
-
-
     }
 
     @FXML

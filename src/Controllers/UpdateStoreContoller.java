@@ -20,16 +20,13 @@ public class UpdateStoreContoller implements Initializable  {
 
 
         @FXML
-        private JFXTextField supplierName;
+        private JFXTextField StoreName;
 
         @FXML
-        private JFXTextField supplierPhone;
+        private JFXTextField StoreAddress;
 
         @FXML
-        private JFXButton supplierUpdate;
-
-        @FXML
-        private JFXTextField supplierAddress;
+        private  JFXButton updateBtn;
 
         public static String storeId;
 
@@ -38,8 +35,8 @@ public class UpdateStoreContoller implements Initializable  {
         void storeUpdateAction(ActionEvent event) {
 
 
-            if (supplierName.getText().trim().isEmpty()
-                    || supplierAddress.getText().trim().isEmpty()
+            if (StoreName.getText().trim().isEmpty()
+                    || StoreAddress.getText().trim().isEmpty()
 
                     ) {
 
@@ -48,8 +45,8 @@ public class UpdateStoreContoller implements Initializable  {
 
             } else {
                 BasicDBObject basicDBObject = new BasicDBObject();
-                basicDBObject.put("name", supplierName.getText());
-                basicDBObject.put("location", supplierAddress.getText());
+                basicDBObject.put("name", StoreName.getText());
+                basicDBObject.put("location", StoreAddress.getText());
 
 
                 BasicDBObject basicDBObjectUpdated = storeTransaction.updateStore(storeId, basicDBObject);
@@ -70,9 +67,10 @@ public class UpdateStoreContoller implements Initializable  {
 
             // get supplierBy Id
             DBObject dbObject = storeTransaction.SelectEmployeeById(storeId);
+
             // set values
-            this.supplierAddress.setText(dbObject.get("location").toString());
-            this.supplierName.setText(dbObject.get("name").toString());
+            this.StoreName.setText(dbObject.get("location").toString());
+            this.StoreAddress.setText(dbObject.get("name").toString());
 
         }
 

@@ -166,6 +166,7 @@ public class HomeController implements Initializable {
             setNode(holderPane);
         }
         if (event.getSource() == stores && ppanel != stores) {
+            System.out.println("الفروع");
             setting.getStyleClass().remove("activeOne");
 //            money.getStyleClass().add("activeOne");
 //
@@ -179,7 +180,7 @@ public class HomeController implements Initializable {
 
             FXMLLoader loader = new FXMLLoader();
 //            loader.setController(new moneyController());
-            loader.setLocation(getClass().getResource("/Fxml/stores.fxml"));
+            loader.setLocation(getClass().getResource("/fxml/stores.fxml"));
             holderPane = loader.load();
 
 
